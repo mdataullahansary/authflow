@@ -44,7 +44,7 @@ export default function LoginPage() {
       console.log("Login success", response.data);
 
       toast.success("Login successful! Redirecting...");
-      router.push("/profile");
+      //router.push("/profile");
     } catch (error: any) {
       console.error("Login error:", error);
       const message =

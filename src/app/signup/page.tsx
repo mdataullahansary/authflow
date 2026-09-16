@@ -11,6 +11,7 @@ export default function SignupPage() {
 
   const [user, setUser] = useState({
     name: "",
+    username : "",
     email: "",
     password: "",
   });
@@ -27,13 +28,14 @@ export default function SignupPage() {
 
   const isFormValid =
     user.name.trim().length > 0 &&
+    user.username.trim().length > 0 &&
     user.email.trim().length > 0 &&
     user.password.length >= 6;
 
   const onSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!user.name.trim() || !user.email.trim() || !user.password) {
+    if (!user.name.trim() || !user.username.trim() || !user.email.trim() || !user.password) {
       setErrorMessage("Please fill in all fields.");
       toast.error("Please fill in all fields.");
       return;
@@ -156,6 +158,31 @@ export default function SignupPage() {
                 value={user.name}
                 onChange={handleChange}
                 placeholder="John Doe"
+                className="w-full rounded-xl border border-zinc-750 bg-zinc-800/60 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 transition-colors duration-200 focus:border-indigo-500 focus:bg-zinc-800/90 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              />
+            </div>
+          </div>
+
+          {/* Username Field */}
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-xs font-medium uppercase tracking-wider text-zinc-300 mb-1.5"
+            >
+              Username
+            </label>
+            <div className="relative">
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-400 font-semibold text-sm">
+                @
+              </span>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                required
+                value={user.username}
+                onChange={handleChange}
+                placeholder="johndoe"
                 className="w-full rounded-xl border border-zinc-750 bg-zinc-800/60 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 transition-colors duration-200 focus:border-indigo-500 focus:bg-zinc-800/90 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
